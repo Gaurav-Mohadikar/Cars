@@ -31,7 +31,7 @@ export function Signup() {
     setError('');
 
     try {
-      const response = await fetch('/api/users/signup', {
+      const response = await fetch('https://cars-back.vercel.app/api/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
