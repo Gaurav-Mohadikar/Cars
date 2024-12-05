@@ -32,7 +32,7 @@ export function Login() {
     setError("");
 
     try {
-      const response = await fetch("/api/users/login", {
+      const response = await fetch("https://cars-back.vercel.app/api/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
