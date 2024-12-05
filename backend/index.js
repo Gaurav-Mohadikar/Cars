@@ -1,12 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-const {connectDB}  = require('./db.js');
+const { connectDB } = require('./db.js');
 const userRoutes = require('./routes/AllRoutes.js');
-const carsRoutes= require ('./routes/carRoutes.js')
-const cartRoutes = require ('./routes/cartRoutes.js')
-const TestDriveRoutes = require ('./routes/testDriveRoutes.js')
+const carsRoutes = require('./routes/carRoutes.js');
+const cartRoutes = require('./routes/cartRoutes.js');
+const TestDriveRoutes = require('./routes/testDriveRoutes.js');
+
 const app = express();
-const port = 3000;
 
 // Connect to the database
 connectDB();
@@ -23,11 +23,22 @@ app.use(express.json());
 
 // Use routes
 app.use("/api/users", userRoutes);
-app.use("/api/cars", carsRoutes );
+app.use("/api/cars", carsRoutes);
 app.use('/api/cart', cartRoutes);
-app.use('/api/testDrive', TestDriveRoutes)
+app.use('/api/testDrive', TestDriveRoutes);
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+// Add a root route handler
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to the Cars API' });
 });
+
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}
+
+// Export the Express app for serverless use
+module.exports = app;
