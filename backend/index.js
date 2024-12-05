@@ -33,12 +33,12 @@ app.get('/', (req, res) => {
 });
 
 // For local development
-if (process.env.NODE_ENV !== 'production') {
-  const port = process.env.PORT || 3000;
+
+  const port =  3000;
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
-}
+
 
 // Export the Express app for serverless use
 module.exports = app;
