@@ -13,7 +13,7 @@ connectDB();
 
 // Enable CORS and allow requests from your React app's origin
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow requests from your React app
+  origin: 'https://cars-front-six.vercel.app', // Allow requests from your React app
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
   credentials: true // If you are sending cookies with requests
 }));
